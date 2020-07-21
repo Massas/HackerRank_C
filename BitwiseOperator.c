@@ -6,8 +6,8 @@
 void calculate_the_maximum(int n, int k) {
 
   short S[n];
-  short maxAnd,maxOr,maxNand;
-  short andtmp,ortmp,nandtmp;
+  short maxAnd,maxOr,maxXor;
+  short andtmp,ortmp,xortmp;
 
   for (int i=1;i<=n;i++){
       S[i] = i;
@@ -20,7 +20,7 @@ void calculate_the_maximum(int n, int k) {
             }
             andtmp=S[g] & S[j];
             ortmp=S[g] | S[j];
-            nandtmp=S[g] ^ S[j];
+            xortmp=S[g] ^ S[j];
 
             if(maxAnd < andtmp && andtmp < k){
                 maxAnd = andtmp;
@@ -28,14 +28,13 @@ void calculate_the_maximum(int n, int k) {
             if(maxOr < ortmp && ortmp < k){
                 maxOr = ortmp;
             }
-            if(maxNand < nandtmp && nandtmp < k){
-                maxNand = nandtmp;
+            if(maxXor < xortmp && xortmp < k){
+                maxXor = xortmp;
             }
         }
     }
-    printf("%d\n",maxAnd);
-    printf("%d\n",maxOr);
-    printf("%d\n",maxNand);
+
+    printf("%d\n%d\n%d\n", maxAnd, maxOr, maxXor);
 
 }
 
